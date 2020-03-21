@@ -1,0 +1,23 @@
+{:duct.profile/base
+ {:duct.core/project-ns foo
+
+  :duct.router/ataraxy
+  {:routes {}}}
+
+ :duct.profile/dev   #duct/include "dev"
+ :duct.profile/local #duct/include "local"
+ :duct.profile/prod  {}
+
+ :duct.module/logging {}
+ :duct.module/sql
+ {}
+
+ :duct.migrator/ragtime
+ {:migrations [#ig/ref :foo.migration/wibble]}
+
+ [:duct.migrator.ragtime/sql :foo.migration/wibble]
+ {:up [#duct/resource "foo/migrations/wibble.up.sql"]
+  :down [#duct/resource "foo/migrations/wibble.down.sql"]}
+
+ :duct.module.web/site
+ {}}
